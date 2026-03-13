@@ -1,0 +1,29 @@
+/* Layout Styles */
+.layout {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 15px;
+  }
+  
+  .user-info span {
+    display: none;
+  }
+}
