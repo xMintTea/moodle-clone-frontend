@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom'
 import './Course.css'
 
-export default function Course() {
+export default function Course(props) {
     return (
-    <a>
+    <Link
+        to={`/course/${props.course.id}`}
+        style={{textDecoration: "none", color: "inherit"}}
+    >
         <div className="card">
             <div style={{ position: 'relative' }}>
                 <img className='card-image' draggable='false'
@@ -14,12 +18,12 @@ export default function Course() {
                     left: '12px',
                     background: '#69fa69',
                   }}>
-                    Код курса
+                    {props.course.id}
                 </div>
             </div>
             <div className="card-content">
-                <h3 className="card-title">Имя курса</h3>
-                <p className="card-description">Описание курса</p>
+                <h3 className="card-title">{props.course.name}</h3>
+                <p className="card-description">{props.course.description}</p>
                 <div style={{ 
                     display: 'flex', 
                     alignItems: 'center', 
@@ -29,9 +33,13 @@ export default function Course() {
                     marginBottom: '12px'}}>
                 </div>
                 <span>👨‍🏫</span>
-                <span>Кабан Кабаныч</span>
+                <span>
+                    {props.course.teachers?.length > 0
+                    ? `${props.course.teachers[0].first_name} ${props.course.teachers[0].middle_name}`
+                    : "Нет учителя"}
+                </span>
             </div>
         </div>
-    </a>
+    </Link>
     )
 }

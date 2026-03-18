@@ -1,15 +1,10 @@
-import { useState } from 'react'
 import './App.css'
-import Dashboard from './components/Dashboard/Dashboard'
-import { RootLayout } from './components/RootLayout/RootLayout'
+import RootLayout from './components/RootLayout/RootLayout'
 
-function App() {
+export default function App() {
   return (
-    <>
     <RootLayout></RootLayout>
-    </>
   )
 }
 
-export default App
   

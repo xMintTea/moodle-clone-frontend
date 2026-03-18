@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 export default function Header() {
     return (
             <header className="header">
                 <div className="header-content">
-                    <a href="" className="nav-link">
+                    <Link to={"/"} className="nav-link">
                         <div className="logo-icon">📚</div>
                         <span className="logo-text">Mints</span>
-                    </a>
+                    </Link>
                     <div className="user-info">
                         <span>Welcome, Mint!</span>
                         <img

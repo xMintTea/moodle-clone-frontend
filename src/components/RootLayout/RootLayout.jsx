@@ -1,11 +1,11 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import "./RootLayout.css"
 import Dashboard from "../Dashboard/Dashboard";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
 
-export function RootLayout() {
+export default function RootLayout() {
     return (
         <div>
             <Header></Header>
@@ -13,7 +13,7 @@ export function RootLayout() {
             <div className="layout">
                 <Sidebar></Sidebar>
                 <main className="main-content">
-                    <Dashboard></Dashboard>
+                    <Outlet/>
                 </main>
             </div>
         </div>
