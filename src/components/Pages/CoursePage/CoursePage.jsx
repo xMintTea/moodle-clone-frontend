@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import api from "../../api.js"
+import api from "../../../api.js"
 import { useCallback, useEffect, useState } from "react";
 
 export default function CoursePage() {

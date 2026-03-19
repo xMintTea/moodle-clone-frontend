@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Dashboard from "./components/Dashboard/Dashboard";
-import GradesPage from "./components/GradesPage/GradesPage";
-import ProfilePage from "./components/ProfilePage/ProfilePage";
+import Dashboard from "./components/UI/Dashboard/Dashboard";
+import GradesPage from "./components/Pages/GradesPage/GradesPage";
+import ProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 import App from "./App";
-import CoursePage from "./components/CoursePage/CoursePage";
+import CoursePage from "./components/Pages/CoursePage/CoursePage";
 
 export const router = createBrowserRouter([
   {

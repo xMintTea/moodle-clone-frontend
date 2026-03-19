@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Course from "../Course/Course";
 import "./Dashboard.css"
 import { Link } from "react-router";
-import api from "../../api.js"
+import api from "../../../api.js"
 
 export default function Dashboard() {
 

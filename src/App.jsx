@@ -1,5 +1,5 @@
 import './App.css'
-import RootLayout from './components/RootLayout/RootLayout'
+import RootLayout from './components/UI/RootLayout/RootLayout'
 
 export default function App() {
   return (
