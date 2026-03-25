@@ -1,0 +1,13 @@
+.grade-wrapper {
+    margin-bottom: 16px;
+}
+
+.grade-wrapper h3 {
+    margin-bottom: 8px;
+}
+
+.grade-wrapper p {
+    font-size: 28px;
+    font-weight: 600;
+    color: #4caf50;
+}

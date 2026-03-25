@@ -1,0 +1,51 @@
+.activity-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-item:hover {
+  background: #f9f9f9;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-completion-icon {
+  font-size: 20px;
+}
+
+.activity-link {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-title {
+  font-weight: 500;
+}
+
+.activity-due-date {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.activity-grade {
+  font-size: 14px;
+  color: #4caf50;
+  margin-top: 4px;
+}
