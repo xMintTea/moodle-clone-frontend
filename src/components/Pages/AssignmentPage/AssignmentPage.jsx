@@ -9,17 +9,6 @@ import SubmittedContent from "../../UI/SubmittedContent/SubmittedContent";
 import { useAssignmentDates } from "../../../hooks/useAssignmentDates";
 import { useCallback, useEffect, useState } from "react";
 import api from "../../../api.js"
-import { useParams, Link } from "react-router-dom"
-import "./AssignmentPage.css"
-import NotFoundBlock from "../../UI/NotFoundBlock/NotFoundBlock";
-import AssignmentSubmit from "../../UI/AssignmentSubmit/AssignmentSubmit";
-import AssignmentUploaderWrapper from "../../UI/AssignmentUploaderWrapper/AssignmentUploaderWrapper";
-import AssignmentInfo from "../../UI/AssignmentInfo/AssignmentInfo";
-import AssignmentDescription from "../../UI/AssignmentDescription/AssignmentDescription";
-import SubmittedContent from "../../UI/SubmittedContent/SubmittedContent";
-import { useAssignmentDates } from "../../../hooks/useAssignmentDates";
-import { useCallback, useEffect, useState } from "react";
-import api from "../../../api.js"
 
 export default function AssignmentPage() {
 
@@ -63,47 +52,6 @@ export default function AssignmentPage() {
         );
     }
 
-
-
-    const {course_id, assignment_id} = useParams()
-    const [assignment, setAssignment] = useState()
-    const [submittion, setSubmittion] = useState()
-
-
-    const fetchAssignment = useCallback(async () => {
-        try {
-            const response = await api.get(`/pages/${assignment_id}`)
-            setAssignment(response.data)
-        } catch(e) {
-            console.error(e)
-        }
-    }, [assignment_id])
-
-    const fetchSubmittion = useCallback(async () => {
-        try {
-            const response = await api.get(`/pages/${assignment_id}/submittions/?user_id=1`)
-            setSubmittion(response.data[0])
-        } catch(e) {
-            console.error(e)
-        }
-    }, [assignment_id])
-
-
-    useEffect(() => {
-        fetchAssignment()
-        fetchSubmittion()
-    },[])
-
-    const {isOverdue, daysUntilDue} = useAssignmentDates(assignment?.dueDate)
-
-    if (!assignment) {
-        return (
-            <NotFoundBlock
-                header="Assignment not found"
-                body="Return to Dashboard"
-                to="/"/>
-        );
-    }
 
 
     return (
