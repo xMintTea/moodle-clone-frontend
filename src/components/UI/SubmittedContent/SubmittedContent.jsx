@@ -1,22 +1,22 @@
-import AssignmentFeedback from "../AssignmentFeedback/AssignmentFeedback";
-import AssignmentGrade from "../AssignmentGrade/AssignmentGrade";
-
+import AssignmentFeedback from "../../../features/assignments/components/AssignmentFeedback/AssignmentFeedback";
+import AssignmentGrade from "../../../features/assignments/components/AssignmentGrade/AssignmentGrade";
+import "./SubmittedContent.css"
 
 export default function SubmittedContent( {assignment, submittion} ) {
     return (
         <>
             <div className="alert alert-success">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <div className="submission-success-message">
                         <span>✓</span>
                         <strong>Submitted successfully</strong>
                     </div>
-                    <p style={{ fontSize: '14px' }}>
+                    <p className="submission-success-text">
                     Your assignment has been submitted and is being reviewed.
                     </p>
             </div>
 
             {submittion.points !== 0 && (
-                <div style={{ marginTop: '20px' }}>
+                <div className="submission-grade-section">
                     <AssignmentGrade assignment={assignment} submittion={submittion}/>
                     <AssignmentFeedback submittion={submittion} />
                     

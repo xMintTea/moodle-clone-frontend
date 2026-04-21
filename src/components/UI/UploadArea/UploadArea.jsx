@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./UploadArea.css"
 
 export default function UploadArea( {setFile} ) {
     const [fileName, setFileName] = useState("");
@@ -14,21 +14,19 @@ export default function UploadArea( {setFile} ) {
 
     return (
         <div className="upload-area">
-            <span style={{ fontSize: '32px', marginBottom: '12px', display: 'block' }}>📤</span>
+            <span className="upload-icon">📤</span>
             <input
                 type="file"
                 onChange={handleFileChange}
                 style={{ display: 'none' }}
                 id="file-upload"
             />
-            <label htmlFor="file-upload" style={{ color: '#1976d2', cursor: 'pointer' }}>
+            <label htmlFor="file-upload" className="upload-label">
             Click to upload
             </label>
-            <p style={{ fontSize: '14px', color: '#666', marginTop: '4px' }}>
-            or drag and drop
-            </p>
+            <p className="upload-hint ">or drag and drop</p>
             {fileName && (
-                <p style={{ fontSize: '14px', color: '#666', marginTop: '12px' }}>
+                <p className="upload-filename">
                 Selected: {fileName}
                 </p>
             )}

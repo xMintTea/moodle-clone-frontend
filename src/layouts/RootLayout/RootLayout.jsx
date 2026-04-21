@@ -7,10 +7,9 @@ import Sidebar from "../Sidebar/Sidebar";
 export default function RootLayout() {
     return (
         <div>
-            <Header></Header>
-
+            <Header/>
             <div className="layout">
-                <Sidebar></Sidebar>
+                <Sidebar/>
                 <main className="main-content">
                     <Outlet/>
                 </main>

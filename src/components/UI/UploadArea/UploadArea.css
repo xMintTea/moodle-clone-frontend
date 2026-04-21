@@ -1,0 +1,39 @@
+.upload-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upload-area:hover {
+  border-color: #1976d2;
+  background: #f9f9f9;
+}
+
+.upload-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+
+.upload-label {
+  color: #1976d2;
+  cursor: pointer;
+}
+
+
+.upload-hint {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+
+.upload-filename {
+  font-size: 14px;
+  color: #666;
+  margin-top: 12px;
+}

@@ -1,4 +1,3 @@
-/* Shared Card Styles */
 .card {
   background: white;
   border-radius: 8px;
@@ -33,11 +32,4 @@
   width: 100%;
   height: 160px;
   object-fit: cover;
-}
-
-
-.course-code {
-  position: absolute;
-  top: 12px;
-  left: 12px;
 }

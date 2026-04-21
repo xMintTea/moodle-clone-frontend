@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Course.css'
+import Badge from '../Badge/Badge'
 
 export default function Course(props) {
     return (
@@ -11,15 +12,9 @@ export default function Course(props) {
             <div style={{ position: 'relative' }}>
                 <img className='card-image' draggable='false'
                  src='https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80'></img>
-                <div className="badge badge-primary"
-                  style={{ 
-                    position: 'absolute', 
-                    top: '12px', 
-                    left: '12px',
-                    background: '#69fa69',
-                  }}>
+                <Badge className="course-code">
                     {props.course.id}
-                </div>
+                </Badge>
             </div>
             <div className="card-content">
                 <h3 className="card-title">{props.course.name}</h3>

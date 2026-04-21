@@ -1,18 +1,10 @@
 import { useState } from "react";
-import AssignmentUploaderWrapper from "../AssignmentUploaderWrapper/AssignmentUploaderWrapper";
-import FormWrapper from "../FormWrapper/FormWrapper";
-import UploadArea from "../UploadArea/UploadArea";
-import styled from "styled-components";
+import FormWrapper from "../../../../components/UI/FormWrapper/FormWrapper.jsx";
+import UploadArea from "../../../../components/UI/UploadArea/UploadArea.jsx";
 import { Form } from "react-router";
-import api from "../../../api.js"
+import api from "../../../../api.js"
 import { useMutation } from "@tanstack/react-query";
 
-
-const ButtonWrapper = styled.div`
-    display: flex;
-    gap: 12px;
-    paddingTop: 16px;
-`
 
 export default function AssignmentSubmit( {isOverdue, pageId, setSubmittion} ) {
 
@@ -61,7 +53,7 @@ export default function AssignmentSubmit( {isOverdue, pageId, setSubmittion} ) {
     };
 
     return (
-        <AssignmentUploaderWrapper header="Submit Assignment">
+        <>
 
             <FormWrapper label="Upload File">
                 <UploadArea setFile={setFile} />
@@ -76,20 +68,20 @@ export default function AssignmentSubmit( {isOverdue, pageId, setSubmittion} ) {
                 />
             </FormWrapper>
 
-            <ButtonWrapper>
+            <div className="button-wrapper">
                 <button onClick={handleSubmit} className="btn btn-primary">
                 Submit Assignment
                 </button>
                 <button className="btn btn-secondary">
                 Save Draft
                 </button>
-            </ButtonWrapper>
+            </div>
 
             {isOverdue && (
-                <div className="alert alert-error" style={{ marginTop: '16px' }}>
+                <div className="alert alert-error overdue-warning">
                 <strong>Note:</strong> This assignment is overdue. Late submissions may receive a grade penalty.
                 </div>
             )}
-        </AssignmentUploaderWrapper>
+        </>
     )
 }

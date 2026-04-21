@@ -1,9 +1,10 @@
 import './App.css'
-import RootLayout from './components/UI/RootLayout/RootLayout'
+import RootLayout from './layouts/RootLayout/RootLayout'
+
 
 export default function App() {
   return (
-    <RootLayout></RootLayout>
+    <RootLayout/>
   )
 }
 

@@ -1,14 +1,13 @@
 import { useParams, Link } from "react-router-dom"
 import "./AssignmentPage.css"
-import NotFoundBlock from "../../UI/NotFoundBlock/NotFoundBlock";
-import AssignmentSubmit from "../../UI/AssignmentSubmit/AssignmentSubmit";
-import AssignmentUploaderWrapper from "../../UI/AssignmentUploaderWrapper/AssignmentUploaderWrapper";
-import AssignmentInfo from "../../UI/AssignmentInfo/AssignmentInfo";
-import AssignmentDescription from "../../UI/AssignmentDescription/AssignmentDescription";
-import SubmittedContent from "../../UI/SubmittedContent/SubmittedContent";
-import { useAssignmentDates } from "../../../hooks/useAssignmentDates";
+import NotFoundBlock from "../../components/UI/NotFoundBlock/NotFoundBlock.jsx"
+import AssignmentSubmit from "../../features/assignments/components/AssignmentSubmit/AssignmentSubmit.jsx";
+import AssignmentInfo from "../../features/assignments/components/AssignmentInfo/AssignmentInfo.jsx";
+import SubmittedContent from "../../components/UI/SubmittedContent/SubmittedContent";
+import { useAssignmentDates } from "../../hooks/useAssignmentDates.jsx";
 import { useCallback, useEffect, useState } from "react";
-import api from "../../../api.js"
+import api from "../../api.js";
+import Card from "../../components/UI/Card/Card.jsx";
 
 export default function AssignmentPage() {
 
@@ -68,16 +67,28 @@ export default function AssignmentPage() {
                 daysUntilDue={daysUntilDue}
             />
 
-            <AssignmentDescription description={assignment.comment}/>
+
+            <Card className="assignment-description">
+                <h2>Assignment Description</h2>
+                <p>{assignment?.comment}</p>
+            </Card>
+
+            <Card className="assignment-submittion-wrapper">
+                <h2>{submittion?.submitted ? "Your Submission" : "Submit Assignment"}</h2>
+            
 
             {submittion?.submitted &&
-            <AssignmentUploaderWrapper header="Your Submission">
                 <SubmittedContent assignment={assignment} submittion={submittion} />
-            </AssignmentUploaderWrapper> }
-        
-            {!submittion?.submitted &&
-            <AssignmentSubmit isOverdue={isOverdue} pageId={assignment?.id} setSubmittion={setSubmittion}></AssignmentSubmit>
             }
+            {!submittion?.submitted &&
+                <AssignmentSubmit
+                    isOverdue={isOverdue}
+                    pageId={assignment?.id}
+                    setSubmittion={setSubmittion}
+                />
+            }
+
+            </Card>
 
         </div>
     )

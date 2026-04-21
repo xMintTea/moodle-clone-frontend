@@ -1,0 +1,15 @@
+
+.assignment-date {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    span {
+        font-size: 20px;
+    }
+}
+
+.deadline-text {
+    font-size: 14px;
+    color: #ff9800;
+}

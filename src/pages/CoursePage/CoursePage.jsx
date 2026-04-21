@@ -1,68 +1,16 @@
 import { Link, useParams } from "react-router-dom";
-import api from "../../../api.js"
+import api from "../../api.js";
 import { useCallback, useEffect, useState } from "react";
-import Module from "../../UI/Module/Module.jsx";
+import NotFoundBlock from "../../components/UI/NotFoundBlock/NotFoundBlock.jsx"
+import Module from "../../components/UI/Module/Module.jsx"
+
 
 import styled from "styled-components"
-import NotFoundBlock from "../../UI/NotFoundBlock/NotFoundBlock.jsx";
+import Card from "../../components/UI/Card/Card.jsx";
+import Badge from "../../components/UI/Badge/Badge.jsx";
+import "./CoursePage.css"
 
 
-const CourseDescriptionBlock = styled.div`
-    padding: 24px;
-
-    p {
-    color: #666;
-    margin-bottom: 16px;
-    }
-`;
-
-
-const ModuleBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-`
-
-
-const CourseBadge = styled.div.attrs({ className : "badge"})`
-    margin-bottom: '8px';
-`
-
-const CourseHeaderBlock = styled.div`
-    position: relative;
-    height: 200px;
-`
-
-const CourseHeaderImg = styled.img`
-    width: 100%;
-    height: 100%;
-    objectFit: cover;
-`
-
-const CourseHeaderGradient = styled.div`
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-`
-
-const CourseNameField = styled.h1`
-    font-size: 28px;
-    margin-bottom: 4px;
-`
-
-const CourseTeacher = styled.p`
-    opacity: 0.9
-`
-
-
-const CourseInfoBlock = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 24px;
-    color: white;
-`
 
 export default function CoursePage( {courseObj} ) {
 
@@ -139,27 +87,27 @@ export default function CoursePage( {courseObj} ) {
                 <span>Return to Dashboard</span>
             </Link>
 
-            <div className="card" style={{ marginBottom: '24px' }}>
-                <CourseHeaderBlock>
-                    <CourseHeaderImg src="" alt=""/>
-                    <CourseHeaderGradient/>
-                    <CourseInfoBlock>
-                        <CourseBadge>Код курса</CourseBadge>
-                        <CourseNameField>{course?.name}</CourseNameField>
-                        <CourseTeacher>{course.teachers?.[0]?.first_name} {course.teachers?.[0]?.middle_name}</CourseTeacher>
-                    </CourseInfoBlock>
-                </CourseHeaderBlock>
+            <Card style={{ marginBottom: '24px' }}>
+                <div className="course-header">
+                    <img className="course-header-img" src="" alt=""/>
+                    <div className="course-gradient"/>
+                    <div className="course-info">
+                        <Badge className="course-badge">{course?.id}</Badge>
+                        <h1 className="course-name">{course?.name}</h1>
+                        <p className="course-teacher">{course.teachers?.[0]?.first_name} {course.teachers?.[0]?.middle_name}</p>
+                    </div>
+                </div>
 
-                <CourseDescriptionBlock>
+                <div className="course-description">
                     <p>{course.description}</p>
-                </CourseDescriptionBlock>
-            </div>
+                </div>
+            </Card>
 
-            <ModuleBlock>
+            <div className="module-block">
                 {course.sections.map((section) => (
                     <Module section={section}></Module>
                 ))}
-            </ModuleBlock>
+            </div>
         </div>
     )
 }

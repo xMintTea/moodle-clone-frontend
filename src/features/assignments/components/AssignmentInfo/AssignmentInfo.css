@@ -1,0 +1,51 @@
+
+.assignment-info {
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+
+.assignment-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+
+.assignment-info-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+
+.assignment-name-info {
+    flex: 1;
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    p {
+        color: #666
+    }
+}
+
+
+.assignment-header-section {
+    display: flex;align-items: center;
+    gap: 12px;
+
+    span {
+        font-size: 20px;
+    }
+}
+
+.grade-value {
+  font-weight: 500;
+  color: #4caf50;
+}

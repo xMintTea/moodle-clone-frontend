@@ -1,0 +1,28 @@
+.assignment-page {
+  max-width: 800px;
+}
+
+.assignment-description {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.assignment-description h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.assignment-description p {
+  color: #666;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.assignment-submittion-wrapper {
+  padding: 24px;
+}
+
+.assignment-submittion-wrapper h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}

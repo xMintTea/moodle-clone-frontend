@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import Course from "../Course/Course";
 import "./Dashboard.css"
-import { Link } from "react-router";
 import api from "../../../api.js"
+import Card from "../Card/Card.jsx";
 
 export default function Dashboard() {
 
     const [courses, setCourses] = useState([])
-
 
     const fetchCourses = useCallback(async () => {
 
