@@ -1,7 +1,6 @@
 import CourseCard from "#/features/course-list/components/CourseCard"
 import { CoursesQueryOptions } from "#/features/course-list/queries/courseQueries"
 import { useSuspenseQuery } from "@tanstack/react-query"
-import { useLoaderData } from "@tanstack/react-router"
 
 
 function CourseListPage() {

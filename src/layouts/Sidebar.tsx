@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router"
 function Sidebar() {
     return (
         <aside className="h-full w-52 bg-white border-r border-gray-200 flex flex-col gap-3">
-            <Link to="/" className="" 
+            <Link to="/my_courses" className="" 
             activeProps={{className : "bg-blue-300"}}>
                 <SidebarItem>Мои курсы</SidebarItem>
             </Link>

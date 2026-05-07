@@ -34,16 +34,8 @@ function RootDocument() {
             <HeadContent />
           </head>
           <body className='h-screen flex flex-col'>
-              <Header/>
-              <div className='flex flex-1 overflow-hidden max-w-screen-xl mx-auto w-full'>
-                <Sidebar/>
-                <main className='flex-1 overflow-auto p-4'>
-                  <Outlet />
-                </main>
-              </div>
+            <Outlet/>
 
-
-            
 
             <TanStackDevtools
               config={{

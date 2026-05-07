@@ -1,9 +1,8 @@
 import CourseListPage from '#/pages/CourseListPage'
 import { createFileRoute } from '@tanstack/react-router'
-import courseService from '#/features/course-list/services/courseService'
 import { CoursesQueryOptions } from '#/features/course-list/queries/courseQueries'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_app/my_courses')({
   loader: async ({context}) => {
     await context.queryClient.ensureQueryData(CoursesQueryOptions())
   },
