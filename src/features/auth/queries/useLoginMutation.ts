@@ -10,7 +10,6 @@ export function useLoginMutation() {
         mutationFn: AuthService.login,
         onSuccess: (data) => {
             localStorage.setItem("access_token", data.access_token)
-            localStorage.setItem("refresh_token", data.refresh_token)
             navigate({to: "/my_courses"})
         }
     })
