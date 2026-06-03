@@ -6,9 +6,9 @@ function AssignmentCard( {assignment} ) {
             <div className="flex align-center gap-3 px-3 py-5">
                 <span>○</span>
                 <div className="flex align-center gap-3">
-                    <span>Иконка</span>
+                    {/* <span>Иконка</span> */}
                     <span className="font-medium">{ assignment.title }</span>
-                    <span>Тип активности</span>
+                    <span>Задание</span>
                 </div>
                 <p className="text-sm mt-1">
                     До: {assignment.due_date}

@@ -1,10 +1,8 @@
 import Card from "#/components/Card"
 import AssignmentInfo from "#/features/assignment-content/components/AssignmentInfo"
-import AssignmentSubmission from "#/features/assignment-content/components/AssignmentSubmission"
 import SubmitAssignment from "#/features/assignment-content/components/SubmitAssignment"
 import { assignmentQueryOptions } from "#/features/assignment-content/queries/assignmentQueries"
 import { Route } from "#/routes/_app/course/assignment/$assignmentId"
-
 import { useSuspenseQuery } from "@tanstack/react-query"
 
 
@@ -24,7 +22,7 @@ function AssignmentPage() {
 
             <Card className="p-6">
                 <h2 className="text-xl mb-4 font-bold">Your Submittion / Submit Assignment</h2>
-                <AssignmentSubmission/>
+                {/* <AssignmentSubmission/> */}
                 {/* or (implement later) */}
                 <SubmitAssignment/>
             </Card>

@@ -16,7 +16,7 @@ function CoursePage() {
 
     return (
         <div>
-            <div>{JSON.stringify(course)}</div>
+            {/* <div>{JSON.stringify(course)}</div> */}
             <Card className="mb-4">
                 <div className="relative h-[200px]">
                     <img src="" alt="" className="w-full h-full object-cover" />
