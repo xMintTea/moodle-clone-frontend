@@ -29,6 +29,7 @@
     "lucide-react": "^0.545.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-textarea-autosize": "^8.5.9",
     "tailwindcss": "^4.1.18",
     "zod": "^4.4.3"
   },
@@ -44,7 +45,7 @@
     "jsdom": "^28.1.0",
     "typescript": "^5.7.2",
     "vite": "^8.0.0",
-    "vitest": "^3.0.5"
+    "vitest": "^4.1.8"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
