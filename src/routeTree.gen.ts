@@ -17,6 +17,8 @@ import { Route as AppMy_coursesRouteImport } from './routes/_app/my_courses'
 import { Route as AppGradesRouteImport } from './routes/_app/grades'
 import { Route as AppCourseCourseIdRouteImport } from './routes/_app/course/$courseId'
 import { Route as AppCourseAssignmentAssignmentIdRouteImport } from './routes/_app/course/assignment/$assignmentId'
+import { Route as AppCourseTestTestIdIndexRouteImport } from './routes/_app/course/test/$testId/index'
+import { Route as AppCourseTestTestIdAttemptIndexRouteImport } from './routes/_app/course/test/$testId/attempt/index'
 
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/_app',
@@ -58,6 +60,18 @@ const AppCourseAssignmentAssignmentIdRoute =
     path: '/course/assignment/$assignmentId',
     getParentRoute: () => AppRouteRoute,
   } as any)
+const AppCourseTestTestIdIndexRoute =
+  AppCourseTestTestIdIndexRouteImport.update({
+    id: '/course/test/$testId/',
+    path: '/course/test/$testId/',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppCourseTestTestIdAttemptIndexRoute =
+  AppCourseTestTestIdAttemptIndexRouteImport.update({
+    id: '/course/test/$testId/attempt/',
+    path: '/course/test/$testId/attempt/',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AppRouteRouteWithChildren
@@ -68,6 +82,8 @@ export interface FileRoutesByFullPath {
   '/register': typeof AuthRegisterRoute
   '/course/$courseId': typeof AppCourseCourseIdRoute
   '/course/assignment/$assignmentId': typeof AppCourseAssignmentAssignmentIdRoute
+  '/course/test/$testId/': typeof AppCourseTestTestIdIndexRoute
+  '/course/test/$testId/attempt/': typeof AppCourseTestTestIdAttemptIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof AppRouteRouteWithChildren
@@ -78,6 +94,8 @@ export interface FileRoutesByTo {
   '/register': typeof AuthRegisterRoute
   '/course/$courseId': typeof AppCourseCourseIdRoute
   '/course/assignment/$assignmentId': typeof AppCourseAssignmentAssignmentIdRoute
+  '/course/test/$testId': typeof AppCourseTestTestIdIndexRoute
+  '/course/test/$testId/attempt': typeof AppCourseTestTestIdAttemptIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +107,8 @@ export interface FileRoutesById {
   '/_auth/register': typeof AuthRegisterRoute
   '/_app/course/$courseId': typeof AppCourseCourseIdRoute
   '/_app/course/assignment/$assignmentId': typeof AppCourseAssignmentAssignmentIdRoute
+  '/_app/course/test/$testId/': typeof AppCourseTestTestIdIndexRoute
+  '/_app/course/test/$testId/attempt/': typeof AppCourseTestTestIdAttemptIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +121,8 @@ export interface FileRouteTypes {
     | '/register'
     | '/course/$courseId'
     | '/course/assignment/$assignmentId'
+    | '/course/test/$testId/'
+    | '/course/test/$testId/attempt/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +133,8 @@ export interface FileRouteTypes {
     | '/register'
     | '/course/$courseId'
     | '/course/assignment/$assignmentId'
+    | '/course/test/$testId'
+    | '/course/test/$testId/attempt'
   id:
     | '__root__'
     | '/_app'
@@ -121,6 +145,8 @@ export interface FileRouteTypes {
     | '/_auth/register'
     | '/_app/course/$courseId'
     | '/_app/course/assignment/$assignmentId'
+    | '/_app/course/test/$testId/'
+    | '/_app/course/test/$testId/attempt/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -187,6 +213,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCourseAssignmentAssignmentIdRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/course/test/$testId/': {
+      id: '/_app/course/test/$testId/'
+      path: '/course/test/$testId'
+      fullPath: '/course/test/$testId/'
+      preLoaderRoute: typeof AppCourseTestTestIdIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/course/test/$testId/attempt/': {
+      id: '/_app/course/test/$testId/attempt/'
+      path: '/course/test/$testId/attempt'
+      fullPath: '/course/test/$testId/attempt/'
+      preLoaderRoute: typeof AppCourseTestTestIdAttemptIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
   }
 }
 
@@ -196,6 +236,8 @@ interface AppRouteRouteChildren {
   AppProfileRoute: typeof AppProfileRoute
   AppCourseCourseIdRoute: typeof AppCourseCourseIdRoute
   AppCourseAssignmentAssignmentIdRoute: typeof AppCourseAssignmentAssignmentIdRoute
+  AppCourseTestTestIdIndexRoute: typeof AppCourseTestTestIdIndexRoute
+  AppCourseTestTestIdAttemptIndexRoute: typeof AppCourseTestTestIdAttemptIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
@@ -204,6 +246,8 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppProfileRoute: AppProfileRoute,
   AppCourseCourseIdRoute: AppCourseCourseIdRoute,
   AppCourseAssignmentAssignmentIdRoute: AppCourseAssignmentAssignmentIdRoute,
+  AppCourseTestTestIdIndexRoute: AppCourseTestTestIdIndexRoute,
+  AppCourseTestTestIdAttemptIndexRoute: AppCourseTestTestIdAttemptIndexRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
