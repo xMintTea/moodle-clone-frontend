@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router"
 import AssignmentCard from "./AssignmentCard"
+import TestCard from "./TestCard"
 
 
 function CourseSection( {section} ) {
@@ -9,7 +10,12 @@ function CourseSection( {section} ) {
             <div>
                 {section.pages.map(assignment => (
                     <Link to="/course/assignment/$assignmentId" params={{assignmentId : assignment.id}}>
-                        <AssignmentCard assignment={assignment}></AssignmentCard>
+                        <AssignmentCard assignment={assignment}/>
+                    </Link>
+                ))}
+                {section.tests.map(test => (
+                    <Link to="/course/test/$testId" params={{testId : test.id}}>
+                        <TestCard test={test}/>
                     </Link>
                 ))}
             </div>

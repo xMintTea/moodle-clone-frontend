@@ -1,16 +1,17 @@
 import Card from "#/components/Card";
 
 
-function TestInfo() {
+function TestInfo({test, attempsAmount}) {
+
     return (
         <Card className="p-4">
-            <h1 className="text-3xl">Тест</h1>
-            <p>Описание теста</p>
+            <h1 className="text-3xl">{test.title}</h1>
+            <p>{test.description}</p>
 
             <div className="flex gap-3 justify-around mt-14 text-center">
                 <div>
                     <p>Количество вопросов</p>
-                    <p>10</p>
+                    <p>{test.content.length}</p>
                 </div>
                 <div>
                     <p>Время на выполнение</p>
@@ -18,11 +19,11 @@ function TestInfo() {
                 </div>
                 <div>
                     <p>Количество попыток</p>
-                    <p>1/1</p>
+                    <p>{test.max_attempts-attempsAmount}/{test.max_attempts}</p>
                 </div>
                 <div>
                     <p>Пройти до</p>
-                    <p>11.11.2111</p>
+                    <p>{test.due_date ? test.due_date : "Бессрочно"}</p>
                 </div>
             </div>
 

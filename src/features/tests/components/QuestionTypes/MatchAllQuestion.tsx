@@ -1,10 +1,10 @@
 import Card from "#/components/Card"
 
 
-function MatchAllQuestion() {
+function MatchAllQuestion({qNumber, left, right}) {
     return (
         <Card className="p-4 text-lg">
-            <h1>Вопрос №4</h1>
+            <h1>Вопрос №{qNumber}</h1>
             <p>Текст вопроса</p>
             <div className="flex">
                 <p>Вариант ответа</p>

@@ -3,7 +3,6 @@ import Card from "#/components/Card"
 import CourseSection from "#/features/course-content/components/CourseSection"
 import { CourseQueryOptions } from "#/features/course-list/queries/courseQueries";
 import { Route } from "#/routes/_app/course/$courseId";
-
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 
