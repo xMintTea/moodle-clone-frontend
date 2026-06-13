@@ -15,9 +15,9 @@ function RouteComponent() {
   const {userName: UserName} = useUserStore()
 
   const navItems = [
-    { path: "/my_courses", icon: Home, label: "Dashboard" },
-    { path: "/grades", icon: Award, label: "Grades" },
-    { path: "/profile", icon: User, label: "Profile" }
+    { path: "/my_courses", icon: Home, label: "Мои курсы" },
+    { path: "/grades", icon: Award, label: "Оценки" },
+    { path: "/profile", icon: User, label: "Профиль" }
   ];
 
   const isActive = (path: string) => {
@@ -49,7 +49,7 @@ function RouteComponent() {
             </Link>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600 hidden sm:block">Welcome, {UserName}!</span>
+            <span className="text-sm text-gray-600 hidden sm:block">Здравствуйте, {UserName}!</span>
             <img
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
               alt="Profile"
