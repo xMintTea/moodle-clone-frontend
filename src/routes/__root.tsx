@@ -1,12 +1,8 @@
 import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-
 import appCss from '../styles.css?url'
-import Header from '#/layouts/Header'
-import Sidebar from '#/layouts/Sidebar'
 import { QueryClient } from '@tanstack/react-query'
-
 
 
 interface RouterContext {

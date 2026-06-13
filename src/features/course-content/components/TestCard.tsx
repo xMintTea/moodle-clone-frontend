@@ -7,7 +7,7 @@ function TestCard( {test} ) {
                 <span>○</span>
                 <div className="flex align-center gap-3">
                     <span className="font-medium">{ test.title }</span>
-                    <span>Задание</span>
+                    <span>Тест</span>
                 </div>
                 <p className="text-sm mt-1">
                     До: {test.due_date? test.due_date : "Бессрочно"}

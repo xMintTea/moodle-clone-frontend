@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { jwtDecode } from 'jwt-decode';
 
 const isServer = typeof window === 'undefined';
 const BASE_URL = "http://127.0.0.1:8000/v1/"
@@ -7,10 +8,56 @@ let isRefreshing = false;
 let queue: ((token: string) => void)[] = [];
 
 
-export const setAccessToken = (token: string | null) => {
-  accessToken = token;
+
+
+interface TokenPayload {
+  id: number;
+  first_name: string;
+  last_name: string;
+  role: number;
+  exp?: number;
+}
+
+
+
+export function getCurrentUser() {
+  if (!accessToken) return null;
+
+  try {
+    const decoded = jwtDecode<TokenPayload>(accessToken);
+
+    if (decoded.exp && decoded.exp * 1000 < Date.now()) return null;
+    return {
+      userId: decoded.id,
+      userName: decoded.first_name,
+      role: decoded.role
+    };
+  } catch {
+    return null;
+  }
+}
+
+type TokenListener = (token: string | null) => void;
+const listeners: TokenListener[] = [];
+
+export const onTokenChange = (listener: TokenListener) => {
+  listeners.push(listener);
+  return () => {
+    const index = listeners.indexOf(listener);
+    if (index !== -1) listeners.splice(index, 1);
+  };
 };
 
+
+
+export const setAccessToken = (token: string | null) => {
+  accessToken = token;
+  listeners.forEach(listener => listener(token));
+};
+
+export const getAccessToken = () => {
+  return accessToken;
+}
 
 const api = axios.create({
     baseURL: BASE_URL,

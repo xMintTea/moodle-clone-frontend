@@ -1,25 +1,41 @@
-import Card from "#/components/Card"
+import { useState } from "react";
+import Card from "#/components/Card";
 
+function SelectOneQuestion({ qNumber, options = [], questionText = "Текст вопроса", onAnswerChange }) {
+  const [selectedValue, setSelectedValue] = useState("");
 
-function SelectOneQuestion({qNumber}) {
-    return (
-        <Card className="p-4 text-lg">
-            <h1>Вопрос №{qNumber}</h1>
-            <p>Текст вопроса</p>
-            <div className="flex flex-col mt-4 gap-1">
-                <div className="">
-                    <input
-                        type="radio"
-                        name="question1"
-                        id="option1"
-                        value="option1"
-                    />
-                    <label htmlFor="option1">Текст варианта ответа</label>
-                </div>
+  const handleChange = (value) => {
+    setSelectedValue(value);
+    onAnswerChange?.(qNumber, value);
+  };
+
+  if (!Array.isArray(options)) return null;
+
+  return (
+    <Card className="p-4 text-lg">
+      <h1 className="mb-2 font-bold">Вопрос №{qNumber}</h1>
+      <p className="mb-4">{questionText}</p>
+      <div className="flex flex-col mt-4 gap-2">
+        {options.map((option, idx) => {
+          const optionId = `q${qNumber}_opt${idx}`;
+          return (
+            <div key={idx} className="flex items-center gap-2">
+              <input
+                type="radio"
+                name={`question_${qNumber}`}
+                id={optionId}
+                value={option}
+                checked={selectedValue === option}
+                onChange={() => handleChange(option)}
+                className="w-4 h-4"
+              />
+              <label htmlFor={optionId}>{option}</label>
             </div>
-        </Card>
-    )
+          );
+        })}
+      </div>
+    </Card>
+  );
 }
 
-
-export default SelectOneQuestion
+export default SelectOneQuestion;

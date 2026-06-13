@@ -25,3 +25,12 @@ export function AttempsQueryOptions(testId: string, userId: string | null) {
         staleTime: 1000 * 60 * 5
     })
 }
+
+
+export function AttempsByCourseQueryOptions(userId: string, course_id: string) {
+    return queryOptions({
+        queryKey: TEST_QUERY_KEYS.attemptsCourse(userId, course_id),
+        queryFn: () => testService.fetchAttempsCourse(userId, course_id),
+        staleTime: 1000 * 60 * 5
+    })
+}

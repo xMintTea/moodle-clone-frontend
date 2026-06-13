@@ -2,7 +2,7 @@ import Card from "#/components/Card"
 import AssignmentInfo from "#/features/assignment-content/components/AssignmentInfo"
 import SubmitAssignment from "#/features/assignment-content/components/SubmitAssignment"
 import { assignmentQueryOptions } from "#/features/assignment-content/queries/assignmentQueries"
-import { Route } from "#/routes/_app/course/assignment/$assignmentId"
+import { Route } from "#/routes/_app/course/$courseId/assignment/$assignmentId"
 import { useSuspenseQuery } from "@tanstack/react-query"
 
 

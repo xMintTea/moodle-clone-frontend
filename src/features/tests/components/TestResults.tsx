@@ -8,9 +8,11 @@ function TestResults({attempts}) {
             <div className="m-3 flex flex-col gap-1">
                 {attempts.length == 0 &&
                 <p className="text-center text-xl">Вы ещё не проходили тест</p>}
-                {attempts.map(attempt => (
-                    <AttempResultsCard></AttempResultsCard>
-                ))}
+                {attempts.map((attempt, index) => {
+                    return <AttempResultsCard aIndex={index+1}  attempt={attempt}></AttempResultsCard>
+                }
+                    
+                )}
             </div>
         </Card>
     )

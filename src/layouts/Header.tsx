@@ -1,7 +1,9 @@
+import { useUserStore } from "#/stores/userStore";
 import { Link } from "@tanstack/react-router"
 
 
 function Header() {
+    const { userName } = useUserStore();
     return (
         <header className="h-12 px-10 py-12 border-b border-slate-300 flex items-center justify-between">
             <div className="flex justify-between">
@@ -11,7 +13,7 @@ function Header() {
                 </Link>
             </div>
             <div>
-                <span>Hello User!</span>
+                <span>Hello {userName}!</span>
                 <img src="" alt="" />
             </div>
         </header>

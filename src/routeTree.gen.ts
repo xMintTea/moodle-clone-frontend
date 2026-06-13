@@ -15,10 +15,14 @@ import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppMy_coursesRouteImport } from './routes/_app/my_courses'
 import { Route as AppGradesRouteImport } from './routes/_app/grades'
-import { Route as AppCourseCourseIdRouteImport } from './routes/_app/course/$courseId'
-import { Route as AppCourseAssignmentAssignmentIdRouteImport } from './routes/_app/course/assignment/$assignmentId'
-import { Route as AppCourseTestTestIdIndexRouteImport } from './routes/_app/course/test/$testId/index'
-import { Route as AppCourseTestTestIdAttemptIndexRouteImport } from './routes/_app/course/test/$testId/attempt/index'
+import { Route as AppCourseCourseIdIndexRouteImport } from './routes/_app/course/$courseId/index'
+import { Route as AppCourseCourseIdRedactIndexRouteImport } from './routes/_app/course/$courseId/redact/index'
+import { Route as AppCourseCourseIdPanelIndexRouteImport } from './routes/_app/course/$courseId/panel/index'
+import { Route as AppCourseCourseIdVideoVideoIdRouteImport } from './routes/_app/course/$courseId/video/$videoId'
+import { Route as AppCourseCourseIdResourceResourceIdRouteImport } from './routes/_app/course/$courseId/resource/$resourceId'
+import { Route as AppCourseCourseIdAssignmentAssignmentIdRouteImport } from './routes/_app/course/$courseId/assignment/$assignmentId'
+import { Route as AppCourseCourseIdTestTestIdIndexRouteImport } from './routes/_app/course/$courseId/test/$testId/index'
+import { Route as AppCourseCourseIdTestTestIdAttemptIndexRouteImport } from './routes/_app/course/$courseId/test/$testId/attempt/index'
 
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/_app',
@@ -49,27 +53,51 @@ const AppGradesRoute = AppGradesRouteImport.update({
   path: '/grades',
   getParentRoute: () => AppRouteRoute,
 } as any)
-const AppCourseCourseIdRoute = AppCourseCourseIdRouteImport.update({
-  id: '/course/$courseId',
-  path: '/course/$courseId',
+const AppCourseCourseIdIndexRoute = AppCourseCourseIdIndexRouteImport.update({
+  id: '/course/$courseId/',
+  path: '/course/$courseId/',
   getParentRoute: () => AppRouteRoute,
 } as any)
-const AppCourseAssignmentAssignmentIdRoute =
-  AppCourseAssignmentAssignmentIdRouteImport.update({
-    id: '/course/assignment/$assignmentId',
-    path: '/course/assignment/$assignmentId',
+const AppCourseCourseIdRedactIndexRoute =
+  AppCourseCourseIdRedactIndexRouteImport.update({
+    id: '/course/$courseId/redact/',
+    path: '/course/$courseId/redact/',
     getParentRoute: () => AppRouteRoute,
   } as any)
-const AppCourseTestTestIdIndexRoute =
-  AppCourseTestTestIdIndexRouteImport.update({
-    id: '/course/test/$testId/',
-    path: '/course/test/$testId/',
+const AppCourseCourseIdPanelIndexRoute =
+  AppCourseCourseIdPanelIndexRouteImport.update({
+    id: '/course/$courseId/panel/',
+    path: '/course/$courseId/panel/',
     getParentRoute: () => AppRouteRoute,
   } as any)
-const AppCourseTestTestIdAttemptIndexRoute =
-  AppCourseTestTestIdAttemptIndexRouteImport.update({
-    id: '/course/test/$testId/attempt/',
-    path: '/course/test/$testId/attempt/',
+const AppCourseCourseIdVideoVideoIdRoute =
+  AppCourseCourseIdVideoVideoIdRouteImport.update({
+    id: '/course/$courseId/video/$videoId',
+    path: '/course/$courseId/video/$videoId',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppCourseCourseIdResourceResourceIdRoute =
+  AppCourseCourseIdResourceResourceIdRouteImport.update({
+    id: '/course/$courseId/resource/$resourceId',
+    path: '/course/$courseId/resource/$resourceId',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppCourseCourseIdAssignmentAssignmentIdRoute =
+  AppCourseCourseIdAssignmentAssignmentIdRouteImport.update({
+    id: '/course/$courseId/assignment/$assignmentId',
+    path: '/course/$courseId/assignment/$assignmentId',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppCourseCourseIdTestTestIdIndexRoute =
+  AppCourseCourseIdTestTestIdIndexRouteImport.update({
+    id: '/course/$courseId/test/$testId/',
+    path: '/course/$courseId/test/$testId/',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppCourseCourseIdTestTestIdAttemptIndexRoute =
+  AppCourseCourseIdTestTestIdAttemptIndexRouteImport.update({
+    id: '/course/$courseId/test/$testId/attempt/',
+    path: '/course/$courseId/test/$testId/attempt/',
     getParentRoute: () => AppRouteRoute,
   } as any)
 
@@ -80,10 +108,14 @@ export interface FileRoutesByFullPath {
   '/profile': typeof AppProfileRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
-  '/course/$courseId': typeof AppCourseCourseIdRoute
-  '/course/assignment/$assignmentId': typeof AppCourseAssignmentAssignmentIdRoute
-  '/course/test/$testId/': typeof AppCourseTestTestIdIndexRoute
-  '/course/test/$testId/attempt/': typeof AppCourseTestTestIdAttemptIndexRoute
+  '/course/$courseId/': typeof AppCourseCourseIdIndexRoute
+  '/course/$courseId/assignment/$assignmentId': typeof AppCourseCourseIdAssignmentAssignmentIdRoute
+  '/course/$courseId/resource/$resourceId': typeof AppCourseCourseIdResourceResourceIdRoute
+  '/course/$courseId/video/$videoId': typeof AppCourseCourseIdVideoVideoIdRoute
+  '/course/$courseId/panel/': typeof AppCourseCourseIdPanelIndexRoute
+  '/course/$courseId/redact/': typeof AppCourseCourseIdRedactIndexRoute
+  '/course/$courseId/test/$testId/': typeof AppCourseCourseIdTestTestIdIndexRoute
+  '/course/$courseId/test/$testId/attempt/': typeof AppCourseCourseIdTestTestIdAttemptIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof AppRouteRouteWithChildren
@@ -92,10 +124,14 @@ export interface FileRoutesByTo {
   '/profile': typeof AppProfileRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
-  '/course/$courseId': typeof AppCourseCourseIdRoute
-  '/course/assignment/$assignmentId': typeof AppCourseAssignmentAssignmentIdRoute
-  '/course/test/$testId': typeof AppCourseTestTestIdIndexRoute
-  '/course/test/$testId/attempt': typeof AppCourseTestTestIdAttemptIndexRoute
+  '/course/$courseId': typeof AppCourseCourseIdIndexRoute
+  '/course/$courseId/assignment/$assignmentId': typeof AppCourseCourseIdAssignmentAssignmentIdRoute
+  '/course/$courseId/resource/$resourceId': typeof AppCourseCourseIdResourceResourceIdRoute
+  '/course/$courseId/video/$videoId': typeof AppCourseCourseIdVideoVideoIdRoute
+  '/course/$courseId/panel': typeof AppCourseCourseIdPanelIndexRoute
+  '/course/$courseId/redact': typeof AppCourseCourseIdRedactIndexRoute
+  '/course/$courseId/test/$testId': typeof AppCourseCourseIdTestTestIdIndexRoute
+  '/course/$courseId/test/$testId/attempt': typeof AppCourseCourseIdTestTestIdAttemptIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -105,10 +141,14 @@ export interface FileRoutesById {
   '/_app/profile': typeof AppProfileRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/register': typeof AuthRegisterRoute
-  '/_app/course/$courseId': typeof AppCourseCourseIdRoute
-  '/_app/course/assignment/$assignmentId': typeof AppCourseAssignmentAssignmentIdRoute
-  '/_app/course/test/$testId/': typeof AppCourseTestTestIdIndexRoute
-  '/_app/course/test/$testId/attempt/': typeof AppCourseTestTestIdAttemptIndexRoute
+  '/_app/course/$courseId/': typeof AppCourseCourseIdIndexRoute
+  '/_app/course/$courseId/assignment/$assignmentId': typeof AppCourseCourseIdAssignmentAssignmentIdRoute
+  '/_app/course/$courseId/resource/$resourceId': typeof AppCourseCourseIdResourceResourceIdRoute
+  '/_app/course/$courseId/video/$videoId': typeof AppCourseCourseIdVideoVideoIdRoute
+  '/_app/course/$courseId/panel/': typeof AppCourseCourseIdPanelIndexRoute
+  '/_app/course/$courseId/redact/': typeof AppCourseCourseIdRedactIndexRoute
+  '/_app/course/$courseId/test/$testId/': typeof AppCourseCourseIdTestTestIdIndexRoute
+  '/_app/course/$courseId/test/$testId/attempt/': typeof AppCourseCourseIdTestTestIdAttemptIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -119,10 +159,14 @@ export interface FileRouteTypes {
     | '/profile'
     | '/login'
     | '/register'
-    | '/course/$courseId'
-    | '/course/assignment/$assignmentId'
-    | '/course/test/$testId/'
-    | '/course/test/$testId/attempt/'
+    | '/course/$courseId/'
+    | '/course/$courseId/assignment/$assignmentId'
+    | '/course/$courseId/resource/$resourceId'
+    | '/course/$courseId/video/$videoId'
+    | '/course/$courseId/panel/'
+    | '/course/$courseId/redact/'
+    | '/course/$courseId/test/$testId/'
+    | '/course/$courseId/test/$testId/attempt/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -132,9 +176,13 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/course/$courseId'
-    | '/course/assignment/$assignmentId'
-    | '/course/test/$testId'
-    | '/course/test/$testId/attempt'
+    | '/course/$courseId/assignment/$assignmentId'
+    | '/course/$courseId/resource/$resourceId'
+    | '/course/$courseId/video/$videoId'
+    | '/course/$courseId/panel'
+    | '/course/$courseId/redact'
+    | '/course/$courseId/test/$testId'
+    | '/course/$courseId/test/$testId/attempt'
   id:
     | '__root__'
     | '/_app'
@@ -143,10 +191,14 @@ export interface FileRouteTypes {
     | '/_app/profile'
     | '/_auth/login'
     | '/_auth/register'
-    | '/_app/course/$courseId'
-    | '/_app/course/assignment/$assignmentId'
-    | '/_app/course/test/$testId/'
-    | '/_app/course/test/$testId/attempt/'
+    | '/_app/course/$courseId/'
+    | '/_app/course/$courseId/assignment/$assignmentId'
+    | '/_app/course/$courseId/resource/$resourceId'
+    | '/_app/course/$courseId/video/$videoId'
+    | '/_app/course/$courseId/panel/'
+    | '/_app/course/$courseId/redact/'
+    | '/_app/course/$courseId/test/$testId/'
+    | '/_app/course/$courseId/test/$testId/attempt/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -199,32 +251,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppGradesRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/course/$courseId': {
-      id: '/_app/course/$courseId'
+    '/_app/course/$courseId/': {
+      id: '/_app/course/$courseId/'
       path: '/course/$courseId'
-      fullPath: '/course/$courseId'
-      preLoaderRoute: typeof AppCourseCourseIdRouteImport
+      fullPath: '/course/$courseId/'
+      preLoaderRoute: typeof AppCourseCourseIdIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/course/assignment/$assignmentId': {
-      id: '/_app/course/assignment/$assignmentId'
-      path: '/course/assignment/$assignmentId'
-      fullPath: '/course/assignment/$assignmentId'
-      preLoaderRoute: typeof AppCourseAssignmentAssignmentIdRouteImport
+    '/_app/course/$courseId/redact/': {
+      id: '/_app/course/$courseId/redact/'
+      path: '/course/$courseId/redact'
+      fullPath: '/course/$courseId/redact/'
+      preLoaderRoute: typeof AppCourseCourseIdRedactIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/course/test/$testId/': {
-      id: '/_app/course/test/$testId/'
-      path: '/course/test/$testId'
-      fullPath: '/course/test/$testId/'
-      preLoaderRoute: typeof AppCourseTestTestIdIndexRouteImport
+    '/_app/course/$courseId/panel/': {
+      id: '/_app/course/$courseId/panel/'
+      path: '/course/$courseId/panel'
+      fullPath: '/course/$courseId/panel/'
+      preLoaderRoute: typeof AppCourseCourseIdPanelIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/course/test/$testId/attempt/': {
-      id: '/_app/course/test/$testId/attempt/'
-      path: '/course/test/$testId/attempt'
-      fullPath: '/course/test/$testId/attempt/'
-      preLoaderRoute: typeof AppCourseTestTestIdAttemptIndexRouteImport
+    '/_app/course/$courseId/video/$videoId': {
+      id: '/_app/course/$courseId/video/$videoId'
+      path: '/course/$courseId/video/$videoId'
+      fullPath: '/course/$courseId/video/$videoId'
+      preLoaderRoute: typeof AppCourseCourseIdVideoVideoIdRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/course/$courseId/resource/$resourceId': {
+      id: '/_app/course/$courseId/resource/$resourceId'
+      path: '/course/$courseId/resource/$resourceId'
+      fullPath: '/course/$courseId/resource/$resourceId'
+      preLoaderRoute: typeof AppCourseCourseIdResourceResourceIdRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/course/$courseId/assignment/$assignmentId': {
+      id: '/_app/course/$courseId/assignment/$assignmentId'
+      path: '/course/$courseId/assignment/$assignmentId'
+      fullPath: '/course/$courseId/assignment/$assignmentId'
+      preLoaderRoute: typeof AppCourseCourseIdAssignmentAssignmentIdRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/course/$courseId/test/$testId/': {
+      id: '/_app/course/$courseId/test/$testId/'
+      path: '/course/$courseId/test/$testId'
+      fullPath: '/course/$courseId/test/$testId/'
+      preLoaderRoute: typeof AppCourseCourseIdTestTestIdIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/course/$courseId/test/$testId/attempt/': {
+      id: '/_app/course/$courseId/test/$testId/attempt/'
+      path: '/course/$courseId/test/$testId/attempt'
+      fullPath: '/course/$courseId/test/$testId/attempt/'
+      preLoaderRoute: typeof AppCourseCourseIdTestTestIdAttemptIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
   }
@@ -234,20 +314,31 @@ interface AppRouteRouteChildren {
   AppGradesRoute: typeof AppGradesRoute
   AppMy_coursesRoute: typeof AppMy_coursesRoute
   AppProfileRoute: typeof AppProfileRoute
-  AppCourseCourseIdRoute: typeof AppCourseCourseIdRoute
-  AppCourseAssignmentAssignmentIdRoute: typeof AppCourseAssignmentAssignmentIdRoute
-  AppCourseTestTestIdIndexRoute: typeof AppCourseTestTestIdIndexRoute
-  AppCourseTestTestIdAttemptIndexRoute: typeof AppCourseTestTestIdAttemptIndexRoute
+  AppCourseCourseIdIndexRoute: typeof AppCourseCourseIdIndexRoute
+  AppCourseCourseIdAssignmentAssignmentIdRoute: typeof AppCourseCourseIdAssignmentAssignmentIdRoute
+  AppCourseCourseIdResourceResourceIdRoute: typeof AppCourseCourseIdResourceResourceIdRoute
+  AppCourseCourseIdVideoVideoIdRoute: typeof AppCourseCourseIdVideoVideoIdRoute
+  AppCourseCourseIdPanelIndexRoute: typeof AppCourseCourseIdPanelIndexRoute
+  AppCourseCourseIdRedactIndexRoute: typeof AppCourseCourseIdRedactIndexRoute
+  AppCourseCourseIdTestTestIdIndexRoute: typeof AppCourseCourseIdTestTestIdIndexRoute
+  AppCourseCourseIdTestTestIdAttemptIndexRoute: typeof AppCourseCourseIdTestTestIdAttemptIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppGradesRoute: AppGradesRoute,
   AppMy_coursesRoute: AppMy_coursesRoute,
   AppProfileRoute: AppProfileRoute,
-  AppCourseCourseIdRoute: AppCourseCourseIdRoute,
-  AppCourseAssignmentAssignmentIdRoute: AppCourseAssignmentAssignmentIdRoute,
-  AppCourseTestTestIdIndexRoute: AppCourseTestTestIdIndexRoute,
-  AppCourseTestTestIdAttemptIndexRoute: AppCourseTestTestIdAttemptIndexRoute,
+  AppCourseCourseIdIndexRoute: AppCourseCourseIdIndexRoute,
+  AppCourseCourseIdAssignmentAssignmentIdRoute:
+    AppCourseCourseIdAssignmentAssignmentIdRoute,
+  AppCourseCourseIdResourceResourceIdRoute:
+    AppCourseCourseIdResourceResourceIdRoute,
+  AppCourseCourseIdVideoVideoIdRoute: AppCourseCourseIdVideoVideoIdRoute,
+  AppCourseCourseIdPanelIndexRoute: AppCourseCourseIdPanelIndexRoute,
+  AppCourseCourseIdRedactIndexRoute: AppCourseCourseIdRedactIndexRoute,
+  AppCourseCourseIdTestTestIdIndexRoute: AppCourseCourseIdTestTestIdIndexRoute,
+  AppCourseCourseIdTestTestIdAttemptIndexRoute:
+    AppCourseCourseIdTestTestIdAttemptIndexRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(

@@ -1,24 +1,51 @@
-import Card from "#/components/Card"
+import { useState } from "react";
+import Card from "#/components/Card";
 
+function MatchAllQuestion({ qNumber, left = [], right = [], questionText = "Текст вопроса", onAnswerChange }) {
+  const [selections, setSelections] = useState(Array(left.length).fill(""));
 
-function MatchAllQuestion({qNumber, left, right}) {
-    return (
-        <Card className="p-4 text-lg">
-            <h1>Вопрос №{qNumber}</h1>
-            <p>Текст вопроса</p>
-            <div className="flex">
-                <p>Вариант ответа</p>
-                <select name="имя_списка">
-                    <option disabled selected value="">Выберите...</option>
-                    <option value="1">Вариант 1</option>
-                    <option value="2">Вариант 2</option>
-                    <option value="3">Вариант 3</option>
-                    <option value="4">Вариант 4</option>
-                </select>
-            </div>
+  const handleSelectChange = (index, value) => {
+    const newSelections = [...selections];
+    newSelections[index] = value;
+    setSelections(newSelections);
+    
 
-        </Card>
-    )
+    const answerObject = {};
+    left.forEach((item, idx) => {
+      if (newSelections[idx]) {
+        answerObject[item] = newSelections[idx];
+      }
+    });
+    onAnswerChange?.(qNumber, answerObject);
+  };
+
+  if (!Array.isArray(left) || !Array.isArray(right)) return null;
+
+  return (
+    <Card className="p-4 text-lg">
+      <h1 className="mb-2 font-bold">Вопрос №{qNumber}</h1>
+      <p className="mb-4">{questionText}</p>
+      <div className="flex flex-col gap-4">
+        {left.map((leftItem, idx) => (
+          <div key={idx} className="flex items-center justify-between gap-4">
+            <span className="flex-1">{leftItem}</span>
+            <select
+              className="px-3 py-2 border rounded-md bg-white"
+              value={selections[idx]}
+              onChange={(e) => handleSelectChange(idx, e.target.value)}
+            >
+              <option disabled value="">Выберите...</option>
+              {right.map((rightOption, optIdx) => (
+                <option key={optIdx} value={rightOption}>
+                  {rightOption}
+                </option>
+              ))}
+            </select>
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
 }
 
-export default MatchAllQuestion
+export default MatchAllQuestion;

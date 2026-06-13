@@ -1,17 +1,17 @@
 import Card from "#/components/Card";
 
 
-function AttempResultsCard() {
+function AttempResultsCard( {aIndex,attempt }) {
     return (
         <Card className="p-4">
-            <p>Попытка №1</p>
+            <p>Попытка №{aIndex}</p>
             <p>Оценка: 5</p>
-            <p>Время прохождения</p>
-            <p>Дата завершения</p>
+            <p>Время прохождения: {attempt.end_time}</p>
+            <p>Дата завершения: {attempt.end_time}</p>
             <div className="flex justify-between text-center mt-3 p-2">
                 <div>
                     <p>Баллы</p>
-                    <p>67/69</p>
+                    <p>{attempt.score}/{attempt.max_score}</p>
                 </div>
                 <div>
                     <p>Тип проверки</p>
