@@ -1,7 +1,7 @@
 import { useParams, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { ChevronLeft, FileText, Download, Link as LinkIcon, Calendar, User, FileSpreadsheet, File } from "lucide-react";
+import { ChevronLeft, FileText, Download, Link as LinkIcon, Calendar, User, FileSpreadsheet, File, VideoIcon } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { CourseQueryOptions } from "#/features/course-list/queries/courseQueries";
@@ -52,7 +52,7 @@ const typeConfig: Record<string, { icon: ReactNode; label: string; color: string
     color: "text-blue-600 bg-blue-50"
   },
   "video/mp4": {
-    icon: <FileText size={24} />,
+    icon: <VideoIcon size={24} />,
     label: "Video",
     color: "text-purple-600 bg-purple-50"
   },
@@ -65,7 +65,7 @@ const typeConfig: Record<string, { icon: ReactNode; label: string; color: string
 
 const getConfig = (contentType: string) => {
   if (contentType.includes("pdf")) return typeConfig["application/pdf"];
-  if (contentType.includes("spreadsheet") || contentType.includes("sheet")) 
+  if (contentType.includes("spreadsheetml") || contentType.includes("sheet")) 
     return typeConfig["sheet"];
   if (contentType.includes("file") || contentType.includes("word")) 
     return typeConfig["file"];
