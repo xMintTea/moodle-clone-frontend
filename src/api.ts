@@ -16,6 +16,7 @@ interface TokenPayload {
   last_name: string;
   role: number;
   exp?: number;
+  email: string;
 }
 
 
@@ -30,7 +31,8 @@ export function getCurrentUser() {
     return {
       userId: decoded.id,
       userName: decoded.first_name,
-      role: decoded.role
+      role: decoded.role,
+      email: decoded.email
     };
   } catch {
     return null;

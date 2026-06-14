@@ -1,4 +1,5 @@
 import Badge from "#/components/Badge";
+import { Button } from "#/components/ui/button";
 import { CourseQueryOptions } from "#/features/course-list/queries/courseQueries";
 import { AttempsByCourseQueryOptions, AttempsQueryOptions } from "#/features/tests/queries/testQueries";
 import { Route } from "#/routes/_app/course/$courseId";
@@ -76,7 +77,7 @@ function CoursePage() {
 
       <Link to="/my_courses" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6">
         <ChevronLeft size={20} />
-        Back to Dashboard
+        Обратно к курсам
       </Link>
 
 
@@ -98,6 +99,12 @@ function CoursePage() {
         <div className="p-6">
           <p className="text-gray-700 mb-4">{course.description}</p>
         </div>
+          <Link to="/course/$courseId/chat" params={{ courseId }}>
+            <Button variant="outline" className="gap-2">
+              <MessageSquare size={16} />
+              Чат курса
+            </Button>
+          </Link>
       </div>
 
 

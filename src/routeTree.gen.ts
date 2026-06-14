@@ -12,10 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
+import { Route as AppTeacherRouteImport } from './routes/_app/teacher'
+import { Route as AppScheduleRouteImport } from './routes/_app/schedule'
 import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppMy_coursesRouteImport } from './routes/_app/my_courses'
 import { Route as AppGradesRouteImport } from './routes/_app/grades'
+import { Route as AppCoursesRouteImport } from './routes/_app/courses'
+import { Route as AppAnnouncementsRouteImport } from './routes/_app/announcements'
 import { Route as AppCourseCourseIdIndexRouteImport } from './routes/_app/course/$courseId/index'
+import { Route as AppCourseCourseIdChatRouteImport } from './routes/_app/course/$courseId/chat'
 import { Route as AppCourseCourseIdRedactIndexRouteImport } from './routes/_app/course/$courseId/redact/index'
 import { Route as AppCourseCourseIdPanelIndexRouteImport } from './routes/_app/course/$courseId/panel/index'
 import { Route as AppCourseCourseIdVideoVideoIdRouteImport } from './routes/_app/course/$courseId/video/$videoId'
@@ -38,6 +43,16 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppTeacherRoute = AppTeacherRouteImport.update({
+  id: '/teacher',
+  path: '/teacher',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppScheduleRoute = AppScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppProfileRoute = AppProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -53,9 +68,24 @@ const AppGradesRoute = AppGradesRouteImport.update({
   path: '/grades',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppCoursesRoute = AppCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAnnouncementsRoute = AppAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppCourseCourseIdIndexRoute = AppCourseCourseIdIndexRouteImport.update({
   id: '/course/$courseId/',
   path: '/course/$courseId/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCourseCourseIdChatRoute = AppCourseCourseIdChatRouteImport.update({
+  id: '/course/$courseId/chat',
+  path: '/course/$courseId/chat',
   getParentRoute: () => AppRouteRoute,
 } as any)
 const AppCourseCourseIdRedactIndexRoute =
@@ -103,11 +133,16 @@ const AppCourseCourseIdTestTestIdAttemptIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof AppRouteRouteWithChildren
+  '/announcements': typeof AppAnnouncementsRoute
+  '/courses': typeof AppCoursesRoute
   '/grades': typeof AppGradesRoute
   '/my_courses': typeof AppMy_coursesRoute
   '/profile': typeof AppProfileRoute
+  '/schedule': typeof AppScheduleRoute
+  '/teacher': typeof AppTeacherRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
+  '/course/$courseId/chat': typeof AppCourseCourseIdChatRoute
   '/course/$courseId/': typeof AppCourseCourseIdIndexRoute
   '/course/$courseId/assignment/$assignmentId': typeof AppCourseCourseIdAssignmentAssignmentIdRoute
   '/course/$courseId/resource/$resourceId': typeof AppCourseCourseIdResourceResourceIdRoute
@@ -119,11 +154,16 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof AppRouteRouteWithChildren
+  '/announcements': typeof AppAnnouncementsRoute
+  '/courses': typeof AppCoursesRoute
   '/grades': typeof AppGradesRoute
   '/my_courses': typeof AppMy_coursesRoute
   '/profile': typeof AppProfileRoute
+  '/schedule': typeof AppScheduleRoute
+  '/teacher': typeof AppTeacherRoute
   '/login': typeof AuthLoginRoute
   '/register': typeof AuthRegisterRoute
+  '/course/$courseId/chat': typeof AppCourseCourseIdChatRoute
   '/course/$courseId': typeof AppCourseCourseIdIndexRoute
   '/course/$courseId/assignment/$assignmentId': typeof AppCourseCourseIdAssignmentAssignmentIdRoute
   '/course/$courseId/resource/$resourceId': typeof AppCourseCourseIdResourceResourceIdRoute
@@ -136,11 +176,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteRouteWithChildren
+  '/_app/announcements': typeof AppAnnouncementsRoute
+  '/_app/courses': typeof AppCoursesRoute
   '/_app/grades': typeof AppGradesRoute
   '/_app/my_courses': typeof AppMy_coursesRoute
   '/_app/profile': typeof AppProfileRoute
+  '/_app/schedule': typeof AppScheduleRoute
+  '/_app/teacher': typeof AppTeacherRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/register': typeof AuthRegisterRoute
+  '/_app/course/$courseId/chat': typeof AppCourseCourseIdChatRoute
   '/_app/course/$courseId/': typeof AppCourseCourseIdIndexRoute
   '/_app/course/$courseId/assignment/$assignmentId': typeof AppCourseCourseIdAssignmentAssignmentIdRoute
   '/_app/course/$courseId/resource/$resourceId': typeof AppCourseCourseIdResourceResourceIdRoute
@@ -154,11 +199,16 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/announcements'
+    | '/courses'
     | '/grades'
     | '/my_courses'
     | '/profile'
+    | '/schedule'
+    | '/teacher'
     | '/login'
     | '/register'
+    | '/course/$courseId/chat'
     | '/course/$courseId/'
     | '/course/$courseId/assignment/$assignmentId'
     | '/course/$courseId/resource/$resourceId'
@@ -170,11 +220,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/announcements'
+    | '/courses'
     | '/grades'
     | '/my_courses'
     | '/profile'
+    | '/schedule'
+    | '/teacher'
     | '/login'
     | '/register'
+    | '/course/$courseId/chat'
     | '/course/$courseId'
     | '/course/$courseId/assignment/$assignmentId'
     | '/course/$courseId/resource/$resourceId'
@@ -186,11 +241,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_app'
+    | '/_app/announcements'
+    | '/_app/courses'
     | '/_app/grades'
     | '/_app/my_courses'
     | '/_app/profile'
+    | '/_app/schedule'
+    | '/_app/teacher'
     | '/_auth/login'
     | '/_auth/register'
+    | '/_app/course/$courseId/chat'
     | '/_app/course/$courseId/'
     | '/_app/course/$courseId/assignment/$assignmentId'
     | '/_app/course/$courseId/resource/$resourceId'
@@ -230,6 +290,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/teacher': {
+      id: '/_app/teacher'
+      path: '/teacher'
+      fullPath: '/teacher'
+      preLoaderRoute: typeof AppTeacherRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/schedule': {
+      id: '/_app/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof AppScheduleRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/profile': {
       id: '/_app/profile'
       path: '/profile'
@@ -251,11 +325,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppGradesRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/courses': {
+      id: '/_app/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof AppCoursesRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/announcements': {
+      id: '/_app/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AppAnnouncementsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/course/$courseId/': {
       id: '/_app/course/$courseId/'
       path: '/course/$courseId'
       fullPath: '/course/$courseId/'
       preLoaderRoute: typeof AppCourseCourseIdIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/course/$courseId/chat': {
+      id: '/_app/course/$courseId/chat'
+      path: '/course/$courseId/chat'
+      fullPath: '/course/$courseId/chat'
+      preLoaderRoute: typeof AppCourseCourseIdChatRouteImport
       parentRoute: typeof AppRouteRoute
     }
     '/_app/course/$courseId/redact/': {
@@ -311,9 +406,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteRouteChildren {
+  AppAnnouncementsRoute: typeof AppAnnouncementsRoute
+  AppCoursesRoute: typeof AppCoursesRoute
   AppGradesRoute: typeof AppGradesRoute
   AppMy_coursesRoute: typeof AppMy_coursesRoute
   AppProfileRoute: typeof AppProfileRoute
+  AppScheduleRoute: typeof AppScheduleRoute
+  AppTeacherRoute: typeof AppTeacherRoute
+  AppCourseCourseIdChatRoute: typeof AppCourseCourseIdChatRoute
   AppCourseCourseIdIndexRoute: typeof AppCourseCourseIdIndexRoute
   AppCourseCourseIdAssignmentAssignmentIdRoute: typeof AppCourseCourseIdAssignmentAssignmentIdRoute
   AppCourseCourseIdResourceResourceIdRoute: typeof AppCourseCourseIdResourceResourceIdRoute
@@ -325,9 +425,14 @@ interface AppRouteRouteChildren {
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppAnnouncementsRoute: AppAnnouncementsRoute,
+  AppCoursesRoute: AppCoursesRoute,
   AppGradesRoute: AppGradesRoute,
   AppMy_coursesRoute: AppMy_coursesRoute,
   AppProfileRoute: AppProfileRoute,
+  AppScheduleRoute: AppScheduleRoute,
+  AppTeacherRoute: AppTeacherRoute,
+  AppCourseCourseIdChatRoute: AppCourseCourseIdChatRoute,
   AppCourseCourseIdIndexRoute: AppCourseCourseIdIndexRoute,
   AppCourseCourseIdAssignmentAssignmentIdRoute:
     AppCourseCourseIdAssignmentAssignmentIdRoute,

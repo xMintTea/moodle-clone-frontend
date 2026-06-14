@@ -10,7 +10,7 @@ function AssignmentSubmission() {
                 <strong>Submitted successfully</strong>
             </div>
             <p className="text-sm">
-                Your assignment has been submitted and is being reviewed.
+                Ваш ответ был отправлен и находится на проверке.
             </p>
         </Alert>
 

@@ -16,19 +16,24 @@ function AssignmentInfo( {assignment} ) {
             <div className="flex items-center gap-3">
                 <span className="text-[20px]">📅</span>
                 <div>
-                    {assignment.due_date}
+                    {new Date(assignment.due_date).toLocaleDateString("ru-RU", {
+                              month: "long",
+                              day: "numeric",
+                              year: "numeric"
+                            })
+                    }
                 </div>
             </div>
             <div className="flex items-center gap-3">
                 <span className="text-[20px]">📊</span>
                 <div>
-                    Баллы {assignment.max_points}
+                    Баллы 100
                 </div>
             </div>
             <div className="flex items-center gap-3">
                 <span className="text-[20px]">✓</span>
                 <div>
-                    Оценка 67/100
+                    Оценка 0/100
                 </div>
             </div>
         </div>

@@ -9,3 +9,12 @@ export function assignmentQueryOptions(assignmentId: string) {
         staleTime: 1000 * 60 * 5
     })
 }
+
+
+export function submissionQueryOptions(assignmentId: string, userId: string ) {
+    return queryOptions({
+        queryKey: ASSIGNMENT_QUERY_KEYS.submission(assignmentId, userId),
+        queryFn: () => assignmentService.fetchSubmissions(assignmentId, userId),
+        staleTime: 1000 * 60 * 5
+    })
+}
